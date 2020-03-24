@@ -1,37 +1,73 @@
-## Welcome to GitHub Pages
+## Useful Data Management Commands
 
-You can use the [editor on GitHub](https://github.com/edwards-bird-lab/data_management/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Below are a list of commands that are useful to lab members as they manage their data on the Harvard cluster. These have been divided into sections based on tasks with some very basic examples. In all cases, these are well-supported, commonly-used programs, so further Google searches should suffice if any additional questions arise. With all of these programs, there are lots of additional options that can be modified (see documentation of each tool), but the basic examples below will cover most applications.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### General
 
-### Markdown
+For file formats not covered below, genetic compression options should suffice. This includes custom file formats used by certain software/pipelines or large output or log files produced by some programs.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+`gzip` (`.gz` extension) is the most commonly used option and is well supported.
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+# gzip a file
+gzip <file>
+# ungzip a file
+gunzip <file.gz>
+# adjust compression level between 1 and 9 (default = 5)
+gzip -7 <file>
+# gzip all files in directory
+gzip *
+# gzip all files ending in .txt
+gzip *.txt
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+`bzip2` (`.bz2` extension) is another common compression type that will be encountered. It is also fairly well supported (not quite as much as `gzip`) and tends to produce more compressed files than `gzip`.
 
-### Jekyll Themes
+```
+# gzip a file
+bzip2 <file>
+# ungzip a file
+bunzip2 <file.gz>
+# adjust compression level between 1 and 9 (default = 5)
+bzip2 -7 <file>
+# gzip all files in directory
+bzip2 *
+# gzip all files ending in .txt
+bzip2 *.txt
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/edwards-bird-lab/data_management/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+`xzip` (`.xz` extension) is the last common compression type to note. It is probably less common than the other two and is therefore less likely to be supported. However, it compresses files the best, on average.
 
-### Support or Contact
+```
+# gzip a file
+xz <file>
+# ungzip a file
+xz -d <file.gz>
+# adjust compression level between 1 and 9 (default = 5)
+xz -7 <file>
+# gzip all files in directory
+xz *
+# gzip all files ending in .txt
+xz *.txt
+```
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+One can also create traditional `zip` files of one or more files, but these tend to be encountered much less in a bioinformatic setting. The above compression types should suffice for any large files you produce.
+
+Occassionally, you may want to compress a bunch of files at once into one compressed file (say, a large set of output files from a program). `zip` will do this, but usually in the Unix/bioinformatics world, users will instead create a tape archive (`.tar`) file, which can be compressed. Tape archive refers to the way we used to archive data and does not have much meaning anymore, but look for the `.tar` extension.
+
+```
+# create a gzipped tar archive
+tar -czvf name-of-archive.tar.gz /path/to/directory-or-file(s)
+# create a bzip2 tar archive
+tar -cjvf name-of-archive.tar.gz /path/to/directory-or-file(s)
+# extract contents of a gzipped archive
+tar -xzvf name-of-archive.tar.gz
+# extract contents of a bzip2 archive
+tar -xjvf name-of-archive.tar.gz
+```
+
+### Sequence Files (FASTA/FASTQ)
+
+### Mapping Files (SAM/BAM)
+
+### Coordinate Files (VCF/GFF/BED)
