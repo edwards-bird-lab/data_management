@@ -178,8 +178,9 @@ The random access to genomic file formats is very useful and in combination with
 
 
 ### Calculating file checksums 
-Calculating file checksums is important for ascertaining that large sequencing files you've copied from the Bauer Core directories are complete and intact. Often when you copy sequencing directories over from the Bauer Core, they will contain a file like the following, often named md5sum.txt or the like. 
+Calculating file checksums is important for ascertaining that large sequencing files you've copied from the Bauer Core directories are complete and intact. Often when you copy sequencing directories over from the Bauer Core, they will contain a file like the following, containing calculated 'checksums', often named something like md5sum.txt. Checksums are unique markers or little digital breadcrumbs from a file which allow you to compare two different versions to ensure that the copied version has no errors.  
 
+The following is a checksum file that was distributed with the Illumina sequencing data I recieved from the Bauer Sequencing Core.
 ```
 b61fdf435897082a1e564d1bb2977a93  fastq/PREP0053/PREP0053_SMacR10811A_A01v1_Mel-205-1384-16Oct-H20_S33_L001_R1_001.fastq.gz
 f1ca4970690cc546e3c30a0ebb6d930e  fastq/PREP0053/PREP0053_SMacR10811A_A01v1_Mel-205-1384-16Oct-H20_S33_L001_R2_001.fastq.gz
@@ -192,3 +193,11 @@ f00897cb54aaf3506074e50821d14d65  fastq/PREP0053/PREP0053_SMacR10811A_D01v1_Stri
 5d3932783deb2d6c3b25619629a1d5dd  fastq/PREP0053/PREP0053_SMacR10811A_E01v1_Mel-178-1251-3Oct-H20_S37_L001_R1_001.fastq.gz
 2e2893ef6b635c78d72cfebcf461518d  fastq/PREP0053/PREP0053_SMacR10811A_E01v1_Mel-178-1251-3Oct-H20_S37_L001_R2_001.fastq.gz
 ```
+
+To compare my copied files against this checksum file, I executed the following command: 
+```
+md5sum -c md5sum.txt > checksums_output
+```
+
+
+
