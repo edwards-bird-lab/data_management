@@ -177,8 +177,9 @@ tabix <file.bed.gz> chr3:1000-2000
 The random access to genomic file formats is very useful and in combination with the compressed nature of the data, these tools are invaluable and worth learning for any bioinformatician. Many common tools (e.g., `samtools`, `bcftools`, `bedtools`, etc.) are actually written to take advantage of these compressed and indexed file formats, since they are so invaluable when analyzing large datasets.
 
 
-### Calculating file checksums 
-Calculating file checksums is important for ascertaining that large sequencing files you've copied from the Bauer Core directories are complete and intact. Often when you copy sequencing directories over from the Bauer Core, they will contain a file like the following, containing calculated 'checksums', often named something like md5sum.txt. Checksums are unique markers or little digital breadcrumbs from a file which allow you to compare two different versions to ensure that the copied version has no errors.  
+### Comparing file checksums 
+
+Calculating and comparing file checksums is important for ascertaining that large sequencing files you've copied from the Bauer Core directories are complete and intact. Often when you copy sequencing directories over from the Bauer Core, they will contain a file like the following, containing calculated 'checksums', often named something like md5sum.txt. Checksums are unique markers or little digital breadcrumbs from a file which allow you to compare two different versions to ensure that the copied version has no errors.  
 
 The following is a checksum file that was distributed with the Illumina sequencing data I recieved from the Bauer Sequencing Core.
 ```
@@ -197,6 +198,22 @@ f00897cb54aaf3506074e50821d14d65  fastq/PREP0053/PREP0053_SMacR10811A_D01v1_Stri
 To compare my copied files against this checksum file, I executed the following command: 
 ```
 md5sum -c md5sum.txt > checksums_output
+```
+
+I was happily able to see that the integrity of my files was not compromised -- they were all deemed 'OK' by the checksums comparion. 
+
+```
+(base) [smorzechowski@holylogin01 211012_A00794_0505_BHLLJYDSX2_SUB10825]$ md5sum -c md5sum.txt
+fastq/PREP0053/PREP0053_SMacR10811A_A01v1_Mel-205-1384-16Oct-H20_S33_L001_R1_001.fastq.gz: OK
+fastq/PREP0053/PREP0053_SMacR10811A_A01v1_Mel-205-1384-16Oct-H20_S33_L001_R2_001.fastq.gz: OK
+fastq/PREP0053/PREP0053_SMacR10811A_B01v1_Cyan-185-1283-16Oct-H20_S34_L001_R1_001.fastq.gz: OK
+fastq/PREP0053/PREP0053_SMacR10811A_B01v1_Cyan-185-1283-16Oct-H20_S34_L001_R2_001.fastq.gz: OK
+```
+
+If the checksums list file is not already generated for the original files, you can also do this yourself, and save to the directory of your choice. 
+
+```
+md5sum fastq/PREP0053/* > md5sum.txt
 ```
 
 
