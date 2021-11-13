@@ -181,7 +181,7 @@ The random access to genomic file formats is very useful and in combination with
 
 Calculating and comparing file checksums is important for ascertaining that large sequencing files you've copied from the Bauer Core directories are complete and intact. Often when you copy sequencing directories over from the Bauer Core, they will contain a file like the following, containing calculated checksums, often named something like `md5sum.txt`. Checksums are unique markers or little digital breadcrumbs from a file which allow you to compare two different versions to ensure that the copied version has no errors.  
 
-The following is a checksum file that was distributed with the Illumina sequencing data I recieved from the Bauer Sequencing Core.
+The following is a checksum file that was distributed with the Illumina sequencing data I recieved from the Bauer Sequencing Core. The 'checksum' is the alphanumeric string preceeding the filepath to each `fastq` file.
 ```
 b61fdf435897082a1e564d1bb2977a93  fastq/PREP0053/PREP0053_SMacR10811A_A01v1_Mel-205-1384-16Oct-H20_S33_L001_R1_001.fastq.gz
 f1ca4970690cc546e3c30a0ebb6d930e  fastq/PREP0053/PREP0053_SMacR10811A_A01v1_Mel-205-1384-16Oct-H20_S33_L001_R2_001.fastq.gz
