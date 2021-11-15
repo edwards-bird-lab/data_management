@@ -9,6 +9,7 @@
 #SBATCH -e log/checksums_%j.err
 #SBATCH --account=edwards_lab
 
+# Made with input from Daren Card and the Data Carpentry website https://datacarpentry.org/2015-08-24-ISU/lessons/07-know_your_data.html 
 
 # Type in the following to learn more about the checksums command:
 md5sum --help
