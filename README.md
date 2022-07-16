@@ -4,7 +4,7 @@ Below are a list of commands that are useful to lab members as they manage their
 
 ### General
 
-For file formats not covered below, genetic compression options should suffice. This includes custom file formats used by certain software/pipelines or large output or log files produced by some programs. Phylogenetics file formats with many loci (e.g., Nexus, Newick, etc.) will also probably need to be compressed.
+For file formats not covered below, generic compression options should suffice. This includes custom file formats used by certain software/pipelines or large output or log files produced by some programs. Phylogenetics file formats with many loci (e.g., Nexus, Newick, etc.) will also probably need to be compressed. Compression options vary and have been adopted at different rates, so support for certain options in certain circumstances may be minimal. If you provided a proper plain-text file, I expect all general compression options to work to compress the file, but the degree to which downstream bioinformatics software will utilize that file format varies (this is what I largely mean when referring to 'support'). For example, gzipped files are far more common, and more likely to be supported in bioinformatics software, than files compressed with bzip2 or xz.
 
 `gzip` (`.gz` extension) is the most commonly used option and is well supported.
 
@@ -21,13 +21,13 @@ gzip *
 gzip *.txt
 ```
 
-`bzip2` (`.bz2` extension) is another common compression type that will be encountered. It is also fairly well supported (not quite as much as `gzip`) and tends to produce more compressed files than `gzip`.
+`bzip2` (`.bz2` extension) is another common compression type that will be encountered. It is also fairly well supported (not as much as `gzip`) and tends to produce more compressed files than `gzip`.
 
 ```
 # gzip a file
 bzip2 <file>
 # ungzip a file
-bunzip2 <file.gz>
+bunzip2 <file.bz2>
 # adjust compression level between 1 and 9 (default = 5)
 bzip2 -7 <file>
 # gzip all files in directory
@@ -36,13 +36,13 @@ bzip2 *
 bzip2 *.txt
 ```
 
-`xzip` (`.xz` extension) is the last common compression type to note. It is probably less common than the other two and is therefore less likely to be supported. However, it compresses files the best, on average.
+`xzip` (`.xz` extension) is the last common compression type to note. It is less common than the other two and is therefore less likely to be supported. However, it compresses files the best, on average.
 
 ```
 # gzip a file
 xz <file>
 # ungzip a file
-xz -d <file.gz>
+xz -d <file.xz>
 # adjust compression level between 1 and 9 (default = 5)
 xz -7 <file>
 # gzip all files in directory
@@ -59,20 +59,20 @@ Occassionally, you may want to compress a bunch of files at once into one compre
 # create a gzipped tar archive
 tar -czvf name-of-archive.tar.gz /path/to/directory-or-file(s)
 # create a bzip2 tar archive
-tar -cjvf name-of-archive.tar.gz /path/to/directory-or-file(s)
+tar -cjvf name-of-archive.tar.bz2 /path/to/directory-or-file(s)
 # extract contents of a gzipped archive
 tar -xzvf name-of-archive.tar.gz
 # extract contents of a bzip2 archive
-tar -xjvf name-of-archive.tar.gz
+tar -xjvf name-of-archive.tar.bz2
 ```
 
-Note that it is seldom necessary to use a gzipped tar (sometimes called a 'tarball') in bioinformatics. Just properly zipping large files and placing them into a standard directory should suffice. Additionally, placing them into a tarball does not really save any additional space. And 'tarballing' several uncompressed files just makes it more difficult to extract a single file if you ever needed to do that. So don't count on needing to do this very often.
+Note that it is seldom necessary to use a gzipped tar (often called a 'tarball') in bioinformatics. Just properly zipping large files and placing them into a standard directory should suffice. Additionally, placing them into a tarball does not really save any additional space. And 'tarballing' several uncompressed files just makes it more difficult to extract a single file if you ever needed to do that. So don't count on needing to do this very often.
 
 ### Sequence Files (FASTA/FASTQ)
 
 **Sequence files like FASTA and, especially, FASTQ should always be zipped.** You will likely receive raw sequencing from the sequencing provider as gzipped FASTQ (`.fastq.gz`) or large genomic files from databases as gzipped FASTA (`.fasta.gz`). In general, it is fine to just leave them in this format. With sequencing reads, any mapping software worth using will work directly with gzipped FASTQ. With reference genomes in FASTA, most mapping software will also index a gzipped version of the reference without issue. Therefore, unless you are working with a piece of non-traditional software, keeping both FASTA and FASTQ gzipped is ideal.
 
-If you ever need to recompress sequence files, the commands under general will apply. Please note that while gzipped versions of these files are commonly supported directly, bzip2 and xz files are much less likely to be supported, so the additional compression may not be worth the loss of compatability.
+If you ever need to recompress sequence files, the commands under General will apply. Please note that while gzipped versions of these files are commonly supported directly, bzip2 and xz files are much less likely to be supported, so the additional compression may not be worth the loss of compatability.
 
 ### Mapping Files (SAM/BAM)
 
@@ -87,7 +87,7 @@ samtools view -S -b sample.sam > sample.bam
 <mapping command that writes to STDOUT> | samtools view -S -b - > sample.bam
 ```
 
-As you can see, `samtools` if your best friend here. However, there are probably alternatives that you can essentially plug in, which may have advantages.
+As you can see, `samtools` if your best friend here. However, there is alternative software that you can essentially plug in, which may have advantages.
 
 More recently, due to large amounts of data not being produced, the CRAM file format was introduced as an even more compressed version of SAM/BAM. In general, if you are working with large resequencing datasets, you should move towards producing these files intead of BAM, as they are quite a bit smaller. Most downstream software in standard variant calling should work with CRAM, but if in doubt, keeping as BAM in the beginning and later converting to CRAM for more permanent storage is probably fine. The command to produce CRAM files is similar to what is above, but you also need a sorted BAM file and the reference genome.
 
@@ -119,7 +119,7 @@ samtools view <file.bam> chr2:1000000
 samtools view <file.bam> chr3:1000-2000
 ```
 
-One last note is that when mapping read data, unmapped reads are usually stored alongside the reads that mapped (see settings for something like BWA). Therefore, you can actually extract the raw input reads from the BAM/CRAM files, which usually represents quality-filtered/trimmed reads. Therefore, you can purge these quality-trimmed reads and manually extract them again from the BAM/CRAM mapping file later. In practice, those working with model organisms and doing a lot of genome sequencing will actually receive their raw data is BAM files mapped to their model reference genome, as BAM is an efficient format for storing raw sequencing data and eliminates the need to also keep FASTQ files. With non-model organisms, this will not usually happen, but this possibility is mentioned here for the sake of completeness. Given how much data is multiplying, strain on computational resources is growing, and this is a valuable way to reduce that strain.
+One last note is that when mapping read data, unmapped reads are usually stored alongside the reads that mapped (see settings for BWA and other tools). Therefore, you can actually extract the raw input reads from the BAM/CRAM files, which usually represents quality-filtered/trimmed reads. Therefore, you can purge these quality-trimmed reads and manually extract them again from the BAM/CRAM mapping file later. In practice, those working with model organisms and doing a lot of genome sequencing will actually receive their raw data is BAM files mapped to their model reference genome, as BAM is an efficient format for storing raw sequencing data and eliminates the need to also keep FASTQ files. With non-model organisms, this will not usually happen, but this possibility is mentioned here for the sake of completeness. Given how much data is multiplying, strain on computational resources is growing, and this is a valuable way to reduce that strain.
 
 ### Coordinate Files (VCF/GFF/BED)
 
@@ -134,7 +134,7 @@ bcftools view -Ou file.vcf > file.bcf
 bcftools view -Ob file.vcf > file.bcf.gz
 ```
 
-Usually, just doing the standard compression is sufficient for variant files, as they usually contain far less data than mapping or sequencing files because they only encode variant sites. An alternative way to produce a `.vcf.gz` file is to use the program `bgzip`, which is my preferred option.
+Usually, just doing the standard compression is sufficient for variant files, as they usually contain far less data than mapping or sequencing files because they only encode variant sites. But for large variant files or in cases where a user wishes to also export invariant sites, the heavier compression options may pay dividends. An alternative way to produce a `.vcf.gz` file is to use the program `bgzip`, which is my preferred option.
 
 ```
 # convert VCF to zipped VCF
