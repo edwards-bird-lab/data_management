@@ -2,6 +2,13 @@
 
 Below are a list of commands that are useful to lab members as they manage their data on the Harvard cluster. These have been divided into sections based on tasks with some very basic examples. In all cases, these are well-supported, commonly-used programs, so further Google searches should suffice if any additional questions arise. With all of these programs, there are lots of additional options that can be modified (see documentation of each tool), but the basic examples below will cover most applications.
 
+## Contents
+- [General](#general)
+- [Sequence Files (FASTA/FASTQ)](#sequence-files-fastafastq)
+- [Mapping Files (SAM/BAM)](#mapping-files-sambam)
+- [Coordinate Files (VCF/GFF/BED)](#coordinate-files-vcfgffbed)
+- [Comparing file checksums](#comparine-file-checksums)
+
 ### General
 
 For file formats not covered below, genetic compression options should suffice. This includes custom file formats used by certain software/pipelines or large output or log files produced by some programs. Phylogenetics file formats with many loci (e.g., Nexus, Newick, etc.) will also probably need to be compressed.
