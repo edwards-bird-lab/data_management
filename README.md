@@ -7,7 +7,7 @@ Below are a list of commands that are useful to lab members as they manage their
 - [Sequence Files (FASTA/FASTQ)](#sequence-files-fastafastq)
 - [Mapping Files (SAM/BAM)](#mapping-files-sambam)
 - [Coordinate Files (VCF/GFF/BED)](#coordinate-files-vcfgffbed)
-- [Comparing file checksums](#comparine-file-checksums)
+- [Comparing file checksums](#comparing-file-checksums)
 
 ### General
 
