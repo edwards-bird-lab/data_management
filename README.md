@@ -251,8 +251,8 @@ The template will ask for the following:
   - prepared_by: **NOTE: IF you have this information you SHOULD include it as a new column in the template. You can add as many custom columns as you like.**
   - lat_lon: `17.392500 S 124.756250 E`
   - specimen_voucher: `MCZ:Orn:335948` **This is incredibly important**
-  - description: `https://mczbase.mcz.harvard.edu/guid/MCZ:Orn:33594`8 **As Jonathan taught me, it is best practice to include the URL to this specimen in MCZBase**
-  - **Add any other custom columns here. You can leave other columns blank that you don't have information for**
+  - description: `https://mczbase.mcz.harvard.edu/guid/MCZ:Orn:335948` **As Jonathan taught me, it is best practice to include the URL to this specimen in MCZBase**
+  - **Add any other custom columns here. You can leave other columns blank.**
 
 You can click on `BioSample` to batch upload your metadata with the template file and NCBI will generate BioSample accession numbers for each of your voucher specimens. 
 
