@@ -232,7 +232,7 @@ It is a great idea to preemptively upload raw sequencing data to NCBI as soon as
 
 1. Navigate to the Submission portal and login with your ORCID id (there are other options too) `https://submit.ncbi.nlm.nih.gov/subs/`
 2. If you are starting from scratch, the first thing you have to do is create a `BioProject` to house all your data.
-3. Next, if you have whole-genome resequencing data or transcriptomic data, you need to include metadata for a BioSample object for each individual specimen you generated sequencing data from. You can use the NCBI template `Model.organism.animal.1.0.xlsx` for uploading metadata from a non-model organism too. See the example file `Pcit_cruf_nleu_resequencing_Model.organism.animal.1.0.xslx` in files. 
+3. Next, if you have whole-genome resequencing data or transcriptomic data, you need to include metadata for a BioSample object for each individual specimen you generated sequencing data from. You can use the NCBI template `Model.organism.animal.1.0.xlsx` for uploading metadata from a non-model organism too. See the example `Pcit_cruf_nleu_resequencing_Model.organism.animal.1.0.xslx` in files. 
   
 The template will ask for the following:
  
@@ -256,20 +256,23 @@ The template will ask for the following:
 
 You can click on `BioSample` to batch upload your metadata with the template file and NCBI will generate BioSample accession numbers for each of your voucher specimens. 
 
-4. Next, click on `Sequence Read Archive (SRA)` to start a new submission. You will also use a template to include all the SRA metadata. See example file `Pcit_cruf_nleu_resequencing_SRA_metadata.xlsx` in files.
+4. Next, click on `Sequence Read Archive (SRA)` to start a new submission. You will also use a template to include all the SRA metadata. See example `Pcit_cruf_nleu_resequencing_SRA_metadata.xlsx` in files.
   -  sample_name: `Cruf_f_335948`
   -  library_ID: `Cruf_f_335948_WGS` or anything unique
   -  title: `Whole-genome resequencing of Conopophila rufogularis (335948)`
   -  library_strategy: `WGS`
   -  library_source: `GENOMIC`
   -  library_selection: `RANDOM`
-  -  library_layout: `paired'
+  -  library_layout: `paired`
   -  platform: `ILLUMINA`
   -  instrument_model: `Illumina NovaSeq 6000`
   -  design_description: `Illumina DNA Kit 1/4 volume transposase-mediated tagmentation-based library prep; sequenced on NovaSeq; 2 x 150 bp reads` as detailed as you like
   -  filetype: `fastq`
   -  filename: `PREP0254_SOrze14568A_A01v1_Cruf_f_335948_S1_L001_R1_001.fastq.gz`
   -  filename2: `PREP0254_SOrze14568A_A01v1_Cruf_f_335948_S1_L001_R2_001.fastq.gz` **you need to add the R1 and R2 fastq files as separate filenames**
+
+Upload this, and then you should be ready to actually transfer the files:
+
    
 
 
