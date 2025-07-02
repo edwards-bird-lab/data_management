@@ -271,7 +271,46 @@ You can click on `BioSample` to batch upload your metadata with the template fil
   -  filename: `PREP0254_SOrze14568A_A01v1_Cruf_f_335948_S1_L001_R1_001.fastq.gz`
   -  filename2: `PREP0254_SOrze14568A_A01v1_Cruf_f_335948_S1_L001_R2_001.fastq.gz` **you need to add the R1 and R2 fastq files as separate filenames**
 
-Upload this, and then you should be ready to actually transfer the files:
+Upload this, and then you should be ready to actually transfer the files. \
+
+5. Select the option of providing files via an FTP preload folder! Then login the the cluster and **navigate to the directory where your raw sequencing fastq files are.** 
+
+```
+# navigate to the directory where your files are:
+/n/holylfs04/LABS/edwards_lab/Lab/smorzechowski/meliphagid/Illumina_data/220911_A00794_0690_AHJFFYDRX2_SUB12863_updated/fastq/REA14568
+
+# Start an interactive session to move the files to NCBI servers with FTP
+salloc -p test --mem 4000 -t 0-12:00 -n 1
+
+# next access the ncbi server
+lftp ftp-private.ncbi.nlm.nih.gov
+
+# login to the server
+login subftp
+
+# Supply the private password supplied by NCBI
+password: **************
+
+# Change directories to the private upload directory provided by NCBI
+cd uploads/smorzechowski_g.harvard.edu_*******
+
+# In this directory, make a new folder, which you can name anything
+mkdir new_folder
+
+# Change directories to this new folder
+cd new_folder
+
+# NOW, you can transfer your files, one at a time with `put`
+put PREP0254_SOrze14568A_A01v1_Cruf_f_335948_S1_L001_R1_001.fastq.gz # DONE
+put PREP0254_SOrze14568A_A01v1_Cruf_f_335948_S1_L001_R2_001.fastq.gz # DONE
+
+# To EXIT the NCBI server when you are done and go back to your cluster session:
+lftp - quit
+
+# It'll take about 10 minutes for the files to show up in the new_folder when you refresh on the NCBI submission portal. Select your folder and then press 'Continue'!
+
+```
+
 
    
 
