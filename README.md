@@ -233,23 +233,24 @@ It is a great idea to preemptively upload raw sequencing data to NCBI as soon as
 1. Navigate to the Submission portal and login with your ORCID id (there are other options too) `https://submit.ncbi.nlm.nih.gov/subs/`
 2. If you are starting from scratch, the first thing you have to do is create a `BioProject` to house all your data.
 3. Next, if you have whole-genome resequencing data or transcriptomic data, you need to include metadata for a BioSample object for each individual specimen you generated sequencing data from. You can use the NCBI template `Model.organism.animal.1.0.xlsx` for uploading metadata from a non-model organism too. The template will ask for the following:
-- sample_name: Cruf_335948
-- sample_tile: Animal sample from Conopophila rufogularis
-- bioproject_accession: PRJNA790760
-- organism: Conopophila rufogularis
-- isolate: Cruf_f_335948
-- age: adult
-- collection_date: 2005-10-31
-- geo_loc_name: Australia:Western Australia:Lennard River Crossing
-- sex: female
-- tissue: muscle
-- biomaterial_provider: Harvard Museum of Comparative Zoology
-- collected_by: Jeremiah R. Trimble
-- prepared_by: *NOTE: IF you have this information you SHOULD include it as a new column in the xls template. You can add as many custom columns as you like.
-- lat_lon: 17.392500 S 124.756250 E
-- specimen_voucher: MCZ:Orn:335948 *This is incredibly important too
-- description: https://mczbase.mcz.harvard.edu/guid/MCZ:Orn:335948 *As Jonathan taught me, it is best practice to include the URL to this specimen in MCZBase
-- Add any other custom columns here.
+   *See the example template file `Pcit_cruf_nleu_resequencing_Model.organism.animal.1.0.xslx` in files. 
+- sample_name: `Cruf_335948`
+- sample_tile: `Animal sample from Conopophila rufogularis`
+- bioproject_accession: `PRJNA790760`
+- organism: `Conopophila rufogularis`
+- isolate: `Cruf_f_335948`
+- age: `adult`
+- collection_date: `2005-10-31`
+- geo_loc_name: `Australia:Western Australia:Lennard River Crossing`
+- sex: `female`
+- tissue: `muscle`
+- biomaterial_provider: `Harvard Museum of Comparative Zoology`
+- collected_by: `Jeremiah R. Trimble`
+- prepared_by: **NOTE: IF you have this information you SHOULD include it as a new column in the xls template. You can add as many custom columns as you like.**
+- lat_lon: `17.392500 S 124.756250 E`
+- specimen_voucher: `MCZ:Orn:335948` **This is incredibly important**
+- description: `https://mczbase.mcz.harvard.edu/guid/MCZ:Orn:33594`8 **As Jonathan taught me, it is best practice to include the URL to this specimen in MCZBase**
+- **Add any other custom columns here. You can leave other columns blank that you don't have information for**
    ```
    
    ``` 
