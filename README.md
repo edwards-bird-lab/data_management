@@ -232,31 +232,44 @@ It is a great idea to preemptively upload raw sequencing data to NCBI as soon as
 
 1. Navigate to the Submission portal and login with your ORCID id (there are other options too) `https://submit.ncbi.nlm.nih.gov/subs/`
 2. If you are starting from scratch, the first thing you have to do is create a `BioProject` to house all your data.
-3. Next, if you have whole-genome resequencing data or transcriptomic data, you need to include metadata for a BioSample object for each individual specimen you generated sequencing data from. You can use the NCBI template `Model.organism.animal.1.0.xlsx` for uploading metadata from a non-model organism too. The template will ask for the following:
-   *See the example template file `Pcit_cruf_nleu_resequencing_Model.organism.animal.1.0.xslx` in files. 
-- sample_name: `Cruf_335948`
-- sample_tile: `Animal sample from Conopophila rufogularis`
-- bioproject_accession: `PRJNA790760`
-- organism: `Conopophila rufogularis`
-- isolate: `Cruf_f_335948`
-- age: `adult`
-- collection_date: `2005-10-31`
-- geo_loc_name: `Australia:Western Australia:Lennard River Crossing`
-- sex: `female`
-- tissue: `muscle`
-- biomaterial_provider: `Harvard Museum of Comparative Zoology`
-- collected_by: `Jeremiah R. Trimble`
-- prepared_by: **NOTE: IF you have this information you SHOULD include it as a new column in the xls template. You can add as many custom columns as you like.**
-- lat_lon: `17.392500 S 124.756250 E`
-- specimen_voucher: `MCZ:Orn:335948` **This is incredibly important**
-- description: `https://mczbase.mcz.harvard.edu/guid/MCZ:Orn:33594`8 **As Jonathan taught me, it is best practice to include the URL to this specimen in MCZBase**
-- **Add any other custom columns here. You can leave other columns blank that you don't have information for**
-   ```
+3. Next, if you have whole-genome resequencing data or transcriptomic data, you need to include metadata for a BioSample object for each individual specimen you generated sequencing data from. You can use the NCBI template `Model.organism.animal.1.0.xlsx` for uploading metadata from a non-model organism too. See the example file `Pcit_cruf_nleu_resequencing_Model.organism.animal.1.0.xslx` in files. 
+  
+The template will ask for the following:
+ 
+  - sample_name: `Cruf_335948`
+  - sample_tile: `Animal sample from Conopophila rufogularis`
+  - bioproject_accession: `PRJNA790760`
+  - organism: `Conopophila rufogularis`
+  - isolate: `Cruf_f_335948`
+  - age: `adult`
+  - collection_date: `2005-10-31`
+  - geo_loc_name: `Australia:Western Australia:Lennard River Crossing`
+  - sex: `female`
+  - tissue: `muscle`
+  - biomaterial_provider: `Harvard Museum of Comparative Zoology`
+  - collected_by: `Jeremiah R. Trimble`
+  - prepared_by: **NOTE: IF you have this information you SHOULD include it as a new column in the template. You can add as many custom columns as you like.**
+  - lat_lon: `17.392500 S 124.756250 E`
+  - specimen_voucher: `MCZ:Orn:335948` **This is incredibly important**
+  - description: `https://mczbase.mcz.harvard.edu/guid/MCZ:Orn:33594`8 **As Jonathan taught me, it is best practice to include the URL to this specimen in MCZBase**
+  - **Add any other custom columns here. You can leave other columns blank that you don't have information for**
+
+You can click on `BioSample` to batch upload your metadata with the template file and NCBI will generate BioSample accession numbers for each of your voucher specimens. 
+
+4. Next, click on `Sequence Read Archive (SRA)` to start a new submission. You will also use a template to include all the SRA metadata. See example file `Pcit_cruf_nleu_resequencing_SRA_metadata.xlsx` in files.
+  -  sample_name: `Cruf_f_335948`
+  -  library_ID: `Cruf_f_335948_WGS` or anything unique
+  -  title: `Whole-genome resequencing of Conopophila rufogularis (335948)`
+  -  library_strategy: `WGS`
+  -  library_source: `GENOMIC`
+  -  library_selection: `RANDOM`
+  -  library_layout: `paired'
+  -  platform: `ILLUMINA`
+  -  instrument_model: `Illumina NovaSeq 6000`
+  -  design_description: `Illumina DNA Kit 1/4 volume transposase-mediated tagmentation-based library prep; sequenced on NovaSeq; 2 x 150 bp reads` as detailed as you like
+  -  filetype: `fastq`
+  -  filename: `PREP0254_SOrze14568A_A01v1_Cruf_f_335948_S1_L001_R1_001.fastq.gz`
+  -  filename2: `PREP0254_SOrze14568A_A01v1_Cruf_f_335948_S1_L001_R2_001.fastq.gz` **you need to add the R1 and R2 fastq files as separate filenames**
    
-   ``` 
-5.
-6.
-7.    click on `Sequence Read Archive (SRA)` to start a new submission.
-8.   
 
 
