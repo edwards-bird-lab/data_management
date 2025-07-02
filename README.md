@@ -8,6 +8,7 @@ Below are a list of commands that are useful to lab members as they manage their
 - [Mapping Files (SAM/BAM)](#mapping-files-sambam)
 - [Coordinate Files (VCF/GFF/BED)](#coordinate-files-vcfgffbed)
 - [Comparing file checksums](#comparing-file-checksums)
+- [Upload raw data to NCBI](#upload-raw-data-to-ncbi)
 
 ### General
 
@@ -224,3 +225,9 @@ If the checksums list file is not already generated for the original files, you 
 ```
 md5sum <file(s)> > md5sum.txt
 ```
+
+### Upload raw data to NCBI
+
+It is a great idea to preemptively upload raw sequencing data to NCBI as soon as you receive it because you can delay its release date until you are ready to publish the eventual manuscript. Since we work with voucher museum specimens, which are often not attributed well in genomic studies, it is an excellent idea to set a good example as an Edwards Lab member, and include copious metadata on the voucher specimens and samples you use in your work. NCBI has many helpful templates for uploading metadata for SRA data and assemblies, etc. 
+
+
