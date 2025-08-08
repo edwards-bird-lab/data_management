@@ -1,6 +1,8 @@
 ## Useful Data Management Commands
 
-Below are a list of commands that are useful to lab members as they manage their data on the Harvard cluster. These have been divided into sections based on tasks with some very basic examples. In all cases, these are well-supported, commonly-used programs, so further Google searches should suffice if any additional questions arise. With all of these programs, there are lots of additional options that can be modified (see documentation of each tool), but the basic examples below will cover most applications.
+Below are a list of commands that are useful to lab members as they manage their data on the Harvard cluster. These have been divided into sections based on tasks with some very basic examples. In all cases, these are well-supported, commonly-used programs, so further Google searches should suffice if any additional questions arise. With all of these programs, there are lots of additional options that can be modified (see documentation of each tool), but the basic examples below will cover most applications. 
+
+This repository was authored and written primarily by Daren Card, with contributions from Sophie Orzechowski on file checksums and NCBI data submission. 
 
 ## Contents
 - [General](#general)
